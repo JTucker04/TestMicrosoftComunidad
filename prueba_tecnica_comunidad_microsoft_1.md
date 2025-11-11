@@ -96,7 +96,7 @@ Marca tu nivel en las siguientes áreas (1=Principiante, 5=Experto):
 - [ ] C++
 - [ ] Go
 - [ ] Rust
-- [x]PHP
+- [x] PHP
 - [ ] Ruby
 - [ ] Swift/Kotlin
 - [ ] Otro: _______________
