@@ -63,11 +63,11 @@
 ## SECCIÓN 1: INFORMACIÓN GENERAL Y PERFIL
 
 ### 1.1 Datos Básicos
-- **Nombre Completo:**
-- **Email:**
+- **Nombre Completo:** Julio Andres Tucker Bermúdez
+- **Email:** jatuker@hotmail.es 
 - **LinkedIn/GitHub (opcional):**
-- **Años de experiencia en tecnología:**
-- **Ocupación actual:** (Estudiante / Desarrollador / DevOps / Otro)
+- **Años de experiencia en tecnología:** 0
+- **Ocupación actual:** Estudiante
 
 ### 1.2 Nivel de Experiencia
 Marca tu nivel en las siguientes áreas (1=Principiante, 5=Experto):
@@ -90,13 +90,13 @@ Marca tu nivel en las siguientes áreas (1=Principiante, 5=Experto):
 **Marca todos los lenguajes que dominas o has utilizado:**
 
 - [ ] C#
-- [ ] TypeScript/JavaScript
-- [ ] Python
-- [ ] Java
+- [x] TypeScript/JavaScript
+- [x] Python
+- [x] Java
 - [ ] C++
 - [ ] Go
 - [ ] Rust
-- [ ] PHP
+- [x]PHP
 - [ ] Ruby
 - [ ] Swift/Kotlin
 - [ ] Otro: _______________
@@ -132,7 +132,21 @@ Optimiza tu solución y explica el tiempo de ejecución.
 
 **Tu solución aquí:**
 ```
-[Escribe tu código y explicación]
+def encontrar_pares_optimizado(lista, objetivo):
+    vistos = {}  # Guardará los números que ya pasamos
+    for num in lista:
+        complemento = objetivo - num
+        if complemento in vistos:
+            return complemento, num
+        vistos[num] = True
+
+numeros = [2, 7, 11, 15]
+objetivo = 9
+print(encontrar_pares_optimizado(numeros, objetivo))
+
+El algoritmo recorre la lista una sola vez, guardando cada número en un diccionario y verificando si el complemento (objetivo - número) ya fue visto.
+Si es así, se devuelve el par.
+El tiempo de ejecución es O(n), ya que cada número se procesa solo una vez, y las búsquedas en el diccionario son operaciones de tiempo constante O(1).
 ```
 
 ---
@@ -142,7 +156,7 @@ Optimiza tu solución y explica el tiempo de ejecución.
 ### 3.1 Conocimientos
 **Marca las tecnologías que conoces:**
 
-- [ ] React
+- [x] React
 - [ ] Angular
 - [ ] Vue.js
 - [ ] Blazor
@@ -157,14 +171,48 @@ Optimiza tu solución y explica el tiempo de ejecución.
 **¿Cuál es la diferencia entre Server-Side Rendering (SSR) y Client-Side Rendering (CSR)? ¿Cuándo usarías cada uno?**
 
 ```
-[Tu respuesta aquí]
+El Server-Side Rendering (SSR) genera el contenido HTML en el servidor y lo envía completo al navegador, permitiendo una carga inicial más rápida y mejor SEO. En cambio, el Client-Side Rendering (CSR) construye la interfaz en el navegador mediante JavaScript, ofreciendo mayor interactividad pero una carga inicial más lenta.
+Se usa SSR en sitios enfocados en contenido y posicionamiento web, y CSR en aplicaciones dinámicas o de uso intensivo en el cliente.
+
 ```
 
 ### 3.3 Ejercicio Práctico
 **Describe cómo estructurarías un componente reutilizable de "Tarjeta de Usuario" que muestre: foto, nombre, email y botón de acción. Incluye el manejo de estados (loading, error, success).**
 
 ```
-[Tu respuesta con código o pseudocódigo]
+
+Código:
+import React, { useState, useEffect } from "react";
+
+function TarjetaUsuario({ foto, nombre, email, onAction }) {
+  const [estado, setEstado] = useState("loading");
+
+  useEffect(() => {
+    // Simular carga de datos
+    setTimeout(() => setEstado("success"), 1000);
+  }, []);
+
+  if (estado === "loading") return <p>Cargando usuario...</p>;
+  if (estado === "error") return <p>Error al cargar los datos.</p>;
+
+  return (
+    <div className="tarjeta">
+      <img src={foto} alt="Foto de usuario" className="tarjeta-foto" />
+      <h3>{nombre}</h3>
+      <p>{email}</p>
+      <button onClick={onAction}>Acción</button>
+    </div>
+  );
+}
+
+export default TarjetaUsuario;
+
+
+Estructuraría el componente “Tarjeta de Usuario” como un módulo reutilizable que reciba propiedades para la foto, nombre, correo y acción.
+Usaría un estado interno (loading, error, success) controlado con useState y useEffect para manejar la carga de datos.
+En estado loading mostraría un indicador, en error un mensaje y en success la información del usuario con un botón de acción.
+Este enfoque permite reutilizar el componente en diferentes partes de la aplicación de forma flexible y mantenible.
+
 ```
 
 ---
@@ -179,7 +227,7 @@ Optimiza tu solución y explica el tiempo de ejecución.
 - [ ] Django/Flask
 - [ ] Spring Boot
 - [ ] Ruby on Rails
-- [ ] PHP (Laravel, Symfony)
+- [x] PHP (Laravel, Symfony)
 - [ ] Go (Gin, Echo)
 - [ ] Otro: _______________
 
@@ -187,7 +235,10 @@ Optimiza tu solución y explica el tiempo de ejecución.
 **Pregunta:** Explica las diferencias entre arquitectura monolítica, microservicios y serverless. ¿Cuándo recomendarías cada una?
 
 ```
-[Tu respuesta aquí]
+La arquitectura monolítica integra toda la aplicación en un solo bloque, ideal para proyectos pequeños por su simplicidad.
+Los microservicios dividen el sistema en componentes independientes, recomendados para aplicaciones grandes y escalables.
+La arquitectura serverless ejecuta funciones en la nube sin gestionar servidores, adecuada para cargas variables o proyectos de bajo mantenimiento.
+
 ```
 
 ### 4.3 APIs y Comunicación
@@ -205,9 +256,9 @@ Optimiza tu solución y explica el tiempo de ejecución.
 ### 4.4 Bases de Datos
 **Marca tus conocimientos:**
 
-- [ ] SQL Server
-- [ ] PostgreSQL
-- [ ] MySQL
+- [x] SQL Server
+- [x] PostgreSQL
+- [x] MySQL
 - [ ] MongoDB
 - [ ] Redis
 - [ ] CosmosDB
@@ -217,7 +268,9 @@ Optimiza tu solución y explica el tiempo de ejecución.
 **Pregunta:** ¿Cuándo elegirías una base de datos SQL vs NoSQL? Proporciona ejemplos concretos.
 
 ```
-[Tu respuesta aquí]
+Usar SQL cuando se necesite trabajar con estructura, consistencia y relaciones entre datos.
+Usar NoSQL cuando se necesite flexibilidad, escalabilidad y rendimiento en grandes volúmenes de datos no estructurados.
+
 ```
 
 ---
@@ -230,7 +283,7 @@ Optimiza tu solución y explica el tiempo de ejecución.
 - [ ] Microsoft Azure
 - [ ] AWS
 - [ ] Google Cloud Platform
-- [ ] Ninguna (aún)
+- [x] Ninguna (aún)
 
 **Servicios específicos que conoces:**
 - [ ] Azure App Service / AWS EC2
@@ -262,7 +315,7 @@ Optimiza tu solución y explica el tiempo de ejecución.
 
 ### 6.1 Experiencia en Game Development
 **Nivel de experiencia:**
-- [ ] Nunca he desarrollado videojuegos
+- [x] Nunca he desarrollado videojuegos
 - [ ] He hecho proyectos personales/tutoriales
 - [ ] He participado en game jams
 - [ ] Trabajo profesionalmente en la industria
@@ -276,7 +329,7 @@ Optimiza tu solución y explica el tiempo de ejecución.
 - [ ] GameMaker
 - [ ] HTML5 Canvas/WebGL
 - [ ] Three.js / Babylon.js
-- [ ] Otro: _______________
+- [x] Otro: _______________
 
 ### 6.3 Conceptos de Game Development
 **Responde brevemente:**
@@ -313,7 +366,7 @@ Optimiza tu solución y explica el tiempo de ejecución.
 
 ### 7.1 Experiencia con IA
 - [ ] No tengo experiencia
-- [ ] Conceptos básicos/teóricos
+- [x] Conceptos básicos/teóricos
 - [ ] He implementado modelos
 - [ ] Trabajo profesionalmente con IA
 
@@ -321,7 +374,7 @@ Optimiza tu solución y explica el tiempo de ejecución.
 **Marca las que conoces:**
 
 - [ ] Azure AI Services
-- [ ] OpenAI API
+- [x] OpenAI API
 - [ ] TensorFlow
 - [ ] PyTorch
 - [ ] Scikit-learn
@@ -345,24 +398,29 @@ Optimiza tu solución y explica el tiempo de ejecución.
 
 1. **SQL Injection:**
 ```
-[Tu respuesta]
+Para prevenirlo, se deben usar consultas parametrizadas o *prepared statements*, evitando concatenar directamente las variables del usuario en las consultas SQL. También es recomendable validar y sanitizar todos los datos de entrada.
+
 ```
 
 2. **XSS (Cross-Site Scripting):**
 ```
-[Tu respuesta]
+Se previene escapando correctamente los datos mostrados en el navegador, validando las entradas del usuario y usando políticas de seguridad como Content Security Policy (CSP) para evitar la ejecución de scripts maliciosos.
 ```
 
 3. **CSRF (Cross-Site Request Forgery):**
 ```
-[Tu respuesta]
+Se evita utilizando tokens CSRF únicos por sesión o solicitud, verificando el origen de las peticiones y utilizando cabeceras seguras como SameSite en las cookies.
 ```
 
 ### 8.2 Autenticación
 **¿Cuál es la diferencia entre autenticación y autorización? ¿Qué es JWT y cómo funciona?**
 
 ```
-[Tu respuesta aquí]
+La autenticación es el proceso de verificar la identidad del usuario (por ejemplo, mediante usuario y contraseña).  
+La autorización ocurre después, y define qué acciones o recursos puede usar ese usuario.
+
+JWT (JSON Web Token) es un método de autenticación basado en tokens.  
+El servidor genera un token firmado que contiene información del usuario; este token se envía al cliente y se incluye en cada petición. El servidor valida la firma para permitir el acceso sin necesidad de mantener sesiones.
 ```
 
 ---
@@ -372,7 +430,7 @@ Optimiza tu solución y explica el tiempo de ejecución.
 ### 9.1 Desarrollo de Software
 **Marca las metodologías que has utilizado:**
 
-- [ ] Scrum
+- [x] Scrum
 - [ ] Kanban
 - [ ] XP (Extreme Programming)
 - [ ] Waterfall
@@ -380,14 +438,15 @@ Optimiza tu solución y explica el tiempo de ejecución.
 
 ### 9.2 Control de Versiones
 **Experiencia con Git:**
-- [ ] Básico (commit, push, pull)
+- [x] Básico (commit, push, pull)
 - [ ] Intermedio (branches, merge, rebase)
 - [ ] Avanzado (workflows, resolución de conflictos complejos)
 
 **Pregunta:** Explica el flujo de trabajo de Git Flow o GitHub Flow:
 
 ```
-[Tu respuesta aquí]
+Usar Git Flow si el proyecto tiene versiones grandes y controladas.
+Usar GitHub Flow si se necesita rapidez, colaboración y despliegues constante
 ```
 
 ### 9.3 Testing
@@ -411,29 +470,29 @@ Optimiza tu solución y explica el tiempo de ejecución.
 ### 10.1 Intereses Personales
 **Ordena por prioridad (1=mayor interés, 10=menor interés) los siguientes temas:**
 
-- [ ] Desarrollo Web (Frontend/Backend)
-- [ ] DevOps y Cloud Computing
-- [ ] Desarrollo de Videojuegos
-- [ ] Inteligencia Artificial / Machine Learning
-- [ ] Desarrollo Mobile
-- [ ] Ciberseguridad
-- [ ] IoT (Internet of Things)
-- [ ] Blockchain / Web3
-- [ ] Data Science / Big Data
-- [ ] AR/VR (Realidad Aumentada/Virtual)
+- [2] Desarrollo Web (Frontend/Backend)
+- [3] DevOps y Cloud Computing
+- [7] Desarrollo de Videojuegos
+- [1] Inteligencia Artificial / Machine Learning
+- [3] Desarrollo Mobile
+- [2] Ciberseguridad
+- [2] IoT (Internet of Things)
+- [5] Blockchain / Web3
+- [5] Data Science / Big Data
+- [8] AR/VR (Realidad Aumentada/Virtual)
 
 ### 10.2 Formato de Eventos
 **¿Qué tipo de eventos te gustaría que organizara la comunidad?**
 
-- [ ] Workshops técnicos presenciales
-- [ ] Webinars online
-- [ ] Hackathons
+- [x] Workshops técnicos presenciales
+- [x] Webinars online
+- [x] Hackathons
 - [ ] Game Jams
-- [ ] Charlas inspiracionales
+- [x] Charlas inspiracionales
 - [ ] Sesiones de pair programming
-- [ ] Code reviews grupales
-- [ ] Networking events
-- [ ] Certificaciones guiadas
+- [x] Code reviews grupales
+- [x] Networking events
+- [x] Certificaciones guiadas
 - [ ] Otro: _______________
 
 ### 10.3 Nivel de Contenido
@@ -441,38 +500,38 @@ Optimiza tu solución y explica el tiempo de ejecución.
 - [ ] Principiante (conceptos básicos)
 - [ ] Intermedio (aplicaciones prácticas)
 - [ ] Avanzado (arquitecturas complejas, optimización)
-- [ ] Mixto (diversidad de niveles)
+- [x] Mixto (diversidad de niveles)
 
 ### 10.4 Tecnologías Microsoft
 **¿Qué productos/servicios de Microsoft te interesan más?**
 
-- [ ] Azure (Cloud Computing)
-- [ ] .NET / C#
+- [x] Azure (Cloud Computing)
+- [x] .NET / C#
 - [ ] Visual Studio / VS Code
-- [ ] GitHub / GitHub Copilot
-- [ ] Power Platform (Power Apps, Power Automate)
-- [ ] Microsoft 365 Development
-- [ ] Xbox Game Development
-- [ ] Microsoft AI (Azure OpenAI, Cognitive Services)
+- [x] GitHub / GitHub Copilot
+- [x] Power Platform (Power Apps, Power Automate)
+- [x] Microsoft 365 Development
+- [x] Xbox Game Development
+- [x] Microsoft AI (Azure OpenAI, Cognitive Services)
 - [ ] Dynamics 365
 - [ ] Otro: _______________
 
 ### 10.5 Colaboración
 **¿Cómo te gustaría contribuir a la comunidad?**
 
-- [ ] Asistir a eventos como participante
+- [x] Asistir a eventos como participante
 - [ ] Dar charlas/talleres
 - [ ] Mentorear a otros miembros
 - [ ] Contribuir con contenido (blogs, tutoriales)
 - [ ] Organizar eventos
-- [ ] Ayudar en proyectos open source de la comunidad
+- [x] Ayudar en proyectos open source de la comunidad
 - [ ] Otro: _______________
 
 ### 10.6 Horarios
 **¿Qué horarios te vienen mejor para eventos online?**
 - [ ] Mañana (8am - 12pm)
 - [ ] Tarde (12pm - 6pm)
-- [ ] Noche (6pm - 10pm)
+- [x] Noche (6pm - 10pm)
 - [ ] Fines de semana
 
 ### 10.7 Proyectos Comunitarios
@@ -480,28 +539,38 @@ Optimiza tu solución y explica el tiempo de ejecución.
 - [ ] Sí, en proyectos open source
 - [ ] Sí, en proyectos de aprendizaje
 - [ ] Sí, en competencias/hackathons
-- [ ] Por ahora solo quiero aprender
+- [x] Por ahora solo quiero aprender
 - [ ] Otro: _______________
 
 ### 10.8 Visión de la Comunidad
 **En tu opinión, ¿cuál debería ser el enfoque principal de la comunidad Microsoft? (respuesta abierta)**
 
 ```
-[Tu visión y sugerencias aquí - sé específico y creativo]
+La comunidad Microsoft debería centrarse en fomentar la colaboración práctica entre desarrolladores de distintos niveles mediante proyectos reales y mentorías activas. Más allá de compartir teoría, el enfoque debería estar en el “learning by doing”: hackathons, laboratorios en la nube y desafíos de código donde los participantes puedan aplicar tecnologías como Azure, .NET MAUI o Power Platform para resolver problemas del mundo real.  
+
+También sería valioso fortalecer la difusión de prácticas modernas de desarrollo —DevOps, IA responsable, seguridad y arquitectura en la nube— con enfoque en sostenibilidad tecnológica y accesibilidad digital. En resumen, una comunidad orientada a la práctica, el aprendizaje continuo y el impacto social positivo mediante la tecnología.
 ```
 
 ### 10.9 Desafíos Actuales
 **¿Cuáles son los mayores desafíos técnicos que enfrentas actualmente en tu desarrollo profesional?**
 
 ```
-[Tu respuesta aquí]
+Uno de los principales desafíos que enfrento es dominar la integración entre diferentes servicios en la nube (API REST, contenedores y funciones serverless) dentro de arquitecturas escalables.  
+
+También me encuentro profundizando en la optimización del rendimiento en bases de datos relacionales y NoSQL, especialmente al escalar sistemas con gran cantidad de usuarios.  
+Otro reto importante es mantener un equilibrio entre la seguridad y la usabilidad de las aplicaciones, aplicando buenas prácticas de autenticación moderna (como OAuth 2.0 y JWT) sin complicar la experiencia del usuario.
+
+Finalmente, estoy trabajando en mejorar mis habilidades de despliegue continuo y automatización (CI/CD) en Azure DevOps para lograr ciclos de entrega más eficientes.
 ```
 
 ### 10.10 Sugerencias Adicionales
 **¿Qué más te gustaría ver en la comunidad? (recursos, beneficios, eventos especiales, etc.)**
 
 ```
-[Tus ideas y sugerencias aquí]
+Me gustaría ver una sección de “Laboratorios Guiados” donde los miembros puedan seguir ejercicios paso a paso con Azure, .NET o Power BI, junto a entornos de práctica gratuitos.  
+También sería excelente contar con sesiones mensuales de mentoría en vivo con expertos de Microsoft, así como un sistema de insignias o logros que motiven la participación constante.  
+
+Otro recurso útil sería un repositorio centralizado de proyectos open source de la comunidad, donde los participantes puedan contribuir, aprender buenas prácticas de arquitectura y obtener experiencia colaborativa real.
 ```
 
 ---
@@ -560,7 +629,69 @@ Diseña un asistente de IA para una empresa que:
 
 **Tu diseño aquí:**
 ```
-[Tu propuesta completa - puede incluir diagramas en texto, arquitectura, pseudocódigo, etc.]
+Mi propuesta es un sistema de IA empresarial basado en Microsoft Azure que permita a los empleados consultar documentos internos mediante un asistente inteligente integrado con Microsoft Teams.
+
+### 1. Arquitectura de la solución
+El flujo general es el siguiente:
+1️⃣ El usuario escribe su pregunta en Teams.  
+2️⃣ El mensaje se envía al backend (Azure Function / Bot Framework).  
+3️⃣ El backend consulta un índice de conocimiento en Azure Cognitive Search.  
+4️⃣ Se usa Azure OpenAI Service para generar una respuesta contextual.  
+5️⃣ La respuesta se devuelve a Teams.
+
+**Diagrama (texto):**
+[Microsoft Teams]
+      ↓
+[Azure Bot Service / Azure Function]
+      ↓
+[Azure Cognitive Search] ← [Azure Blob Storage + Documentos internos]
+      ↓
+[Azure OpenAI Service (RAG)]
+      ↓
+[Respuesta contextual → Teams]
+
+---
+
+### 2. Servicios de Azure / IA a utilizar
+- Azure OpenAI Service → comprensión y generación de lenguaje natural.  
+- Azure Cognitive Search → indexación semántica.  
+- Azure Blob Storage → almacenamiento de documentos internos.  
+- Azure Bot Service → comunicación con Teams.  
+- Azure Key Vault → protección de credenciales.  
+- Azure Monitor → métricas y registros.  
+- Azure Active Directory → autenticación y control de acceso.
+
+---
+
+### 3. Pipeline de procesamiento de documentos
+1️⃣ Ingesta de documentos a Blob Storage.  
+2️⃣ Extracción de texto con Cognitive Search Indexer.  
+3️⃣ Indexación y generación de embeddings con OpenAI.  
+4️⃣ Consulta mediante RAG (Retrieval-Augmented Generation).  
+5️⃣ Respuesta final al usuario con fuentes citadas.
+
+---
+
+### 4. Estrategia de seguridad y compliance
+- Autenticación con Azure AD.  
+- Autorización por roles internos.  
+- Encriptación en reposo y en tránsito.  
+- Cumplimiento con GDPR e ISO 27001.  
+- Entorno aislado en red privada (VNet).
+
+---
+
+### 5. KPIs para medir efectividad
+- Precisión de las respuestas (% correctas).  
+- Tiempo promedio de respuesta.  
+- Nivel de confianza del modelo.  
+- Tasa de adopción (usuarios activos).  
+- Feedback de satisfacción.
+
+---
+
+**Resumen general:**
+Este sistema usa IA generativa, búsqueda semántica y servicios Azure para ofrecer un asistente empresarial seguro y escalable. Reduce el tiempo de búsqueda de información, mejora la productividad y fomenta la innovación.
 ```
 
 ---
@@ -569,12 +700,12 @@ Diseña un asistente de IA para una empresa que:
 
 ### ¿Por qué quieres unirte a esta comunidad?
 ```
-[Tu respuesta]
+Porque creo que aprender junto a otros desarrolladores apasionados es la mejor forma de crecer. La comunidad Microsoft ofrece un entorno de innovación continua, y quiero formar parte de ese movimiento y aprender de expertos que ya están construyendo el futuro digital.
 ```
 
 ### ¿Qué esperas aprender o lograr en los próximos 6 meses?
 ```
-[Tu respuesta]
+Espero fortalecer mis habilidades en arquitectura en la nube con Azure, automatización con DevOps y desarrollo backend con .NET. También quiero desarrollar un proyecto colaborativo dentro de la comunidad y certificarme en alguna tecnología de Microsoft, como Azure Fundamentals o AI-900.
 ```
 
 ### ¿Algún comentario adicional?
